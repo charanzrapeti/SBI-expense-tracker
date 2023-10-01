@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootswatch.com_5_lux_bootstrap.css">
+    <title>SBI Expense Tracker</title>
+</head>
+<body>
+    <div class="container-fluid bg-light text-center py-4"> <!-- Centered heading at the top -->
+        <div class="row">
+            <div class="col-12">
+                <span class="display-3">SBI</span>
+                <h1 class="display-6 px-3 d-inline"> Expense Tracker</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4"> <!-- Container for cards -->
+        <h1 class="mb-4 mt-4">Overview</h1>
+        <div class="row">
+            <div class="col-lg-4 mb-4"> <!-- Each card occupies 30% on large screens -->
+                <div class="card border-success">
+                    <div class="card-header">Initial Balance</div>
+                    <div class="card-body">
+                        <h5 class="card-title">01/09/2023</h5>
+                        <p class="card-text">15590 Rs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-danger">
+                    <div class="card-header">Net Change</div>
+                    <div class="card-body">
+                        <h5 class="card-title">30 Days</h5>
+                        <p class="card-text">-145000 Rs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-success">
+                    <div class="card-header">Current Balance</div>
+                    <div class="card-body">
+                        <h5 class="card-title">30/09/2023</h5>
+                        <p class="card-text">1000 Rs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="container mb-4 ">
+            <h1 class="mb-4 mt-4">Analysis</h1>
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-8"> <!-- Occupies 70% width on medium and larger screens -->
+                        <div class=" p-3">
+                            <!-- Content for the first container -->
+                            <canvas id="barChart" ></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-4"> <!-- Occupies 30% width on medium and larger screens -->
+                        <div class="bg-secondary p-3">
+                            <!-- Content for the second container -->
+                            <canvas id="doughnutChart" ></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h1 class="mb-4">Transactions</h1>
+            <!-- 
+            <table class="table table-hover">
+                <thead>
+                  <tr class="table-dark">
+                    <th scope="col">Type</th>
+                    <th scope="col">Column heading</th>
+                    <th scope="col">Column heading</th>
+                    <th scope="col">Column heading</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-danger">
+                    <th scope="row">Active</th>
+                    <td>Column content</td>
+                    <td>Column content</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tag the Item
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Item 1</a>
+                                <a class="dropdown-item" href="#">Item 2</a>
+                                <a class="dropdown-item" href="#">Item 3</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#customItemModal">Add Custom</a>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr class="table-danger">
+                    <th scope="row">Default</th>
+                    <td>Column content</td>
+                    <td>Column content</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tag the Item
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Item 1</a>
+                                <a class="dropdown-item" href="#">Item 2</a>
+                                <a class="dropdown-item" href="#">Item 3</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#customItemModal">Add Custom</a>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr class="table-success">
+                    <th scope="row">Primary</th>
+                    <td>Column content</td>
+                    <td>Column content</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tag the Item
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Item 1</a>
+                                <a class="dropdown-item" href="#">Item 2</a>
+                                <a class="dropdown-item" href="#">Item 3</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#customItemModal">Add Custom</a>
+                            </div>
+                        </div>
+                          
+                    </td>
+                  </tr>
+                  <tr class="table-success">
+                    <th scope="row">Secondary</th>
+                    <td>Column content</td>
+                    <td>Column content</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tag the Item
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Item 1</a>
+                                <a class="dropdown-item" href="#">Item 2</a>
+                                <a class="dropdown-item" href="#">Item 3</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#customItemModal">Add Custom</a>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                  <tr class="table-danger">
+                    <th scope="row">Success</th>
+                    <td>Column content</td>
+                    <td>Column content</td>
+                    <td><div class="dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Tag the Item
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Item 1</a>
+                            <a class="dropdown-item" href="#">Item 2</a>
+                            <a class="dropdown-item" href="#">Item 3</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#customItemModal">Add Custom</a>
+                        </div>
+                    </div></td>
+                  </tr>
+                  <tr class="table-danger">
+                    <th scope="row">Danger</th>
+                    <td>Column content</td>
+                    <td>Column content</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tag the Item
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Item 1</a>
+                                <a class="dropdown-item" href="#">Item 2</a>
+                                <a class="dropdown-item" href="#">Item 3</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#customItemModal">Add Custom</a>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+       
+                </tbody>
+              </table> -->
+              <table class="table table-hover">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">S.No</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">From</th>
+                        <th scope="col">To</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">TransactionID</th>
+                        <th scope="col">Tag</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1 -->
+                    <tr class="table-success">
+                        <th scope="row">1</th>
+                        <td>credit</td>
+                        <td>Account1</td>
+                        <td>Account4</td>
+                        <td>500</td>
+                        <td>ABC12345</td>
+                        
+                        <td>
+                            <div class="dropdown">
+                                <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tag the Item
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <a class="dropdown-item" href="#">Item 1</a>
+                                    <a class="dropdown-item" href="#">Item 2</a>
+                                    <a class="dropdown-item" href="#">Item 3</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#customItemModal">Add Custom</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="optionsRadios" id="flexCheckChecked" value="option2" checked="">
+                                <label for="status">checked</label>
+    
+                              </div>
+                        </td>
+                    </tr>
+            
+                    <!-- Row 2 -->
+                    <tr class="table-danger">
+                        <th scope="row">2</th>
+                        <td>debit</td>
+                        <td>Account2</td>
+                        <td>Account5</td>
+                        <td>750</td>
+                        <td>XYZ78901</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tag the Item
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                    <a class="dropdown-item" href="#">Item 1</a>
+                                    <a class="dropdown-item" href="#">Item 2</a>
+                                    <a class="dropdown-item" href="#">Item 3</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#customItemModal">Add Custom</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="optionsRadios" id="flexCheckChecked" value="option2" checked="">
+                                <label for="status">checked</label>
+    
+                              </div>
+                        </td>
+                    </tr>
+            
+                    <!-- Repeat similar rows with different data -->
+            
+                </tbody>
+            </table>
+            
+        </div>
+    
+
+    
+            <div class="container mt-4" >
+               
+                <div class="modal fade" id="customItemModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="customItemModalLabel">Add Custom Item</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" class="form-control" id="customItemText" placeholder="Enter Custom Item">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="addCustomItem" data-bs-dismiss="modal">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</body>
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./elements.js"></script>
+</html>
